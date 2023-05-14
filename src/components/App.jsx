@@ -1,7 +1,7 @@
 import React from 'react';
 import { GlobalStyle } from './GlobalStyle';
 // import Button from './Button/Button';
-import ImageGallery from './ImageGallery/ImageGallery';
+// import ImageGallery from './ImageGallery/ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
 import { Component } from 'react';
@@ -32,10 +32,11 @@ class App extends Component {
         <Loader />
         {/* <Modal /> */}
         <Searchbar onSearch={this.handleSubmit} />
+        {/* <ImageGallery /> */}
         <ul>
-          <ImageGallery value={this.state.textSearh} />
+          <ImageGalleryItem value={this.state.textSearh} />
         </ul>
-        <ImageGalleryItem />
+
         <GlobalStyle />
       </div>
     );

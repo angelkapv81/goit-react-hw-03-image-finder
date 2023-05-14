@@ -12,6 +12,9 @@ class Searcbar extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+
+    if (this.state.value) {
+    }
     this.props.onSearch(this.state.value);
     this.setState({ value: '' });
   };
