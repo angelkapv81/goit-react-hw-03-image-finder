@@ -6,6 +6,7 @@ import { ModalOverlay, ModalContainer } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
+  // propTypes
   static propTypes = {
     selectedImage: PropTypes.string,
     tags: PropTypes.string,
