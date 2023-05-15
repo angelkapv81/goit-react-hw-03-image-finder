@@ -8,6 +8,8 @@ export default function ImageGalleryItem({ tags, previewImg, selectedImage }) {
     </GalleryItem>
   );
 }
+
+// propTypes
 ImageGalleryItem.propTypes = {
   tags: PropTypes.string.isRequired,
   previewImg: PropTypes.string.isRequired,
