@@ -9,6 +9,7 @@ export default function LoadMoreButton({ onClick }) {
   );
 }
 
+// propTypes
 LoadMoreButton.propTypes = {
   onClick: PropTypes.func,
 };
