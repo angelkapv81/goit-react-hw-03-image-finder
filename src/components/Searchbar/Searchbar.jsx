@@ -1,48 +1,57 @@
-import PropTypes from 'prop-types';
-import { SearchFormInput } from './Searchbar.styled';
-import { SearchForm } from './Searchbar.styled';
-import { SearchFormButton } from './Searchbar.styled';
-import { SearchFormButtonLabel } from './Searchbar.styled';
 import { Component } from 'react';
-import { Searchbar } from './Searchbar.styled';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Search } from '@mui/icons-material';
 
-import { ImSearch } from 'react-icons/im';
-
-class Searcbar extends Component {
+import PropTypes from 'prop-types';
+import {
+  Searchbar,
+  SerchForm,
+  Input,
+  SearchBtn,
+  SerchFormBtnLabel,
+} from './Serchbar.styled';
+export default class Searhbar extends Component {
   state = {
-    value: '',
+    searchQuery: '',
   };
 
-  handleChange = ({ target: { value } }) => {
-    this.setState({ value });
+  handleChange = e => {
+    this.setState({ searchQuery: e.currentTarget.value.toLowerCase() });
   };
   handleSubmit = e => {
     e.preventDefault();
-
-    if (!this.state.value) {
-      return console.log('упс');
+    if (this.state.searchQuery.trim() === '') {
+      toast.error('Please enter something');
+      return;
     }
-    this.props.onSearch(this.state.value);
-    this.setState({ value: '' });
+    this.props.onSubmit(this.state.searchQuery);
+    this.setState({ searchQuery: '' });
   };
   render() {
     return (
       <Searchbar>
-        <SearchForm onSubmit={this.handleSubmit}>
-          <SearchFormButton type="submit">
-            <SearchFormButtonLabel>
-              <ImSearch />
-            </SearchFormButtonLabel>
-          </SearchFormButton>
-          <SearchFormInput
-            type="search"
-            value={this.state.value}
+        <SerchForm onSubmit={this.handleSubmit}>
+          <Input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images ..."
+            name="serchQuery"
+            value={this.state.searchQuery}
             onChange={this.handleChange}
-            placeholder="Search images and photos"
           />
-        </SearchForm>
+          <SearchBtn type="submit">
+            <SerchFormBtnLabel>
+              <Search />
+            </SerchFormBtnLabel>
+          </SearchBtn>
+        </SerchForm>
       </Searchbar>
     );
   }
 }
-export default Searcbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+};

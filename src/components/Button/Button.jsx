@@ -1,9 +1,14 @@
-// import PropTypes from 'prop-types';
-// import { ContactsBlock } from './Loader.styled';
-// import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { LoadMoreBtn } from './Button.styled';
 
-// const Loader = ({}) => {
-//   return <ContactsBlock></ContactsBlock>;
-// };
+export default function LoadMoreButton({ onClick }) {
+  return (
+    <LoadMoreBtn type="button" onClick={onClick}>
+      Load more
+    </LoadMoreBtn>
+  );
+}
 
-// export default Button;
+LoadMoreButton.propTypes = {
+  onClick: PropTypes.func,
+};

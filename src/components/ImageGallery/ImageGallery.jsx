@@ -1,20 +1,27 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
-import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
-import { ImgGallery } from './ImageGallery.styled';
-
-class ImageGallery extends Component {
-  state = {};
-  render() {
-    return (
-      <>
-        <ImgGallery>
-          <ImageGalleryItem value={this.state.textSearh} />
-        </ImgGallery>
-      </>
-    );
-  }
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { ImageList } from './ImageGallery.styled';
+export default function ImageGallery({ images, selectedImage }) {
+  return (
+    <ImageList>
+      {images.map(({ id, webformatURL, tags, largeImageURL }) => (
+        <ImageGalleryItem
+          key={id}
+          previewImg={webformatURL}
+          tags={tags}
+          selectedImage={() => selectedImage(largeImageURL, tags)}
+        />
+      ))}
+    </ImageList>
+  );
 }
-// }
 
-export default ImageGallery;
+// PropTypes
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  selectedImage: PropTypes.func,
+};
