@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
-// import { ContactsBlock } from './Loader.styled';
+import { SearchFormInput } from './Searchbar.styled';
+import { SearchForm } from './Searchbar.styled';
+import { SearchFormButton } from './Searchbar.styled';
+import { SearchFormButtonLabel } from './Searchbar.styled';
 import { Component } from 'react';
+import { Searchbar } from './Searchbar.styled';
+
+import { ImSearch } from 'react-icons/im';
 
 class Searcbar extends Component {
   state = {
@@ -13,23 +19,29 @@ class Searcbar extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    if (this.state.value) {
+    if (!this.state.value) {
+      return console.log('упс');
     }
     this.props.onSearch(this.state.value);
     this.setState({ value: '' });
   };
   render() {
     return (
-      <>
-        <form onSubmit={this.handleSubmit}>
-          <button type="submit">пошук</button>
-          <input
+      <Searchbar>
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchFormButton type="submit">
+            <SearchFormButtonLabel>
+              <ImSearch />
+            </SearchFormButtonLabel>
+          </SearchFormButton>
+          <SearchFormInput
             type="search"
             value={this.state.value}
             onChange={this.handleChange}
+            placeholder="Search images and photos"
           />
-        </form>
-      </>
+        </SearchForm>
+      </Searchbar>
     );
   }
 }
