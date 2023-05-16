@@ -34,7 +34,6 @@ export default class Modal extends Component {
   };
   render() {
     const { selectedImage, tags } = this.props;
-
     return createPortal(
       <ModalOverlay onClick={this.handleBackdropClick}>
         <ModalContainer>
