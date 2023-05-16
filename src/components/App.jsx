@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import SearhBar from './Searchbar/Searchbar';
+import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import LoadMoreButton from './Button/Button';
 import { AppContainer } from './App.styled';
@@ -101,7 +101,7 @@ export default class App extends Component {
     const { images, status, selectedImage, alt, error } = this.state;
     return (
       <AppContainer>
-        <SearhBar onSubmit={this.handleFormSubmit} />
+        <Searchbar onSubmit={this.handleFormSubmit} />
         <ToastContainer autoClose={3000} theme="colored" pauseOnHover />
         {status === 'pending' && <Spiner />}
         {error && (
